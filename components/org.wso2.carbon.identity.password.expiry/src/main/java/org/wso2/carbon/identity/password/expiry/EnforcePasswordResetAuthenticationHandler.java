@@ -96,7 +96,7 @@ public class EnforcePasswordResetAuthenticationHandler extends AbstractPostAuthn
 
         for (AuthenticatorConfig authenticator : authenticators) {
             if (PasswordPolicyConstants.BASIC_AUTHENTICATOR.equals(authenticator.getName())) {
-                if (!authenticatedUser.isFederatedUser()) {
+                if (!authenticatedUser.isFederatedUser() && !authenticatedUser.isSharedUser()) {
 
                     String username = authenticatedUser.toFullQualifiedUsername();
                     String tenantAwareUsername = MultitenantUtils.getTenantAwareUsername(username);
